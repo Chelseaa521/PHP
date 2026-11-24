@@ -1,0 +1,71 @@
+:root{
+  --latar:#14213d; --titik:#26386a; --kertas:#ffffff; --tinta:#14213d; --samar:#5b6580;
+  --aksen:#7b1e2e; --aksen-gelap:#5a1220; --stabilo:#e0b45a; --bahaya:#b3263a;
+  --garis:#d5d9e6;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; color:var(--tinta);
+  font-family:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  background:var(--latar);
+  background-image:radial-gradient(var(--titik) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+.wrap{max-width:640px;margin:0 auto;padding:28px 18px 60px}
+
+.profil{display:flex;align-items:center;gap:16px;margin-bottom:22px;
+  animation:turun .6s cubic-bezier(.2,.8,.2,1) both}
+.profil img,.avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;
+  border:3px solid var(--kertas);box-shadow:0 0 0 3px var(--stabilo)}
+.avatar{display:grid;place-items:center;background:var(--aksen);color:#fff;font-size:2rem;font-weight:700}
+.profil h2{margin:0;font-size:1.3rem;color:#fff}
+.profil p{margin:2px 0 0;color:#b9c3e0}
+
+.kartu{background:var(--kertas);border:2px solid var(--stabilo);border-radius:14px;
+  padding:24px;box-shadow:6px 6px 0 var(--aksen)}
+.kartu h1{margin:0 0 16px;font-size:1.8rem}
+.bar{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.keluar{color:var(--samar);font-size:.9rem}
+.keluar:hover{color:var(--bahaya)}
+
+label{display:block;margin:14px 0 6px;font-weight:600}
+input[type=text],input[type=password]{width:100%;padding:11px 12px;font:inherit;
+  border:2px solid var(--tinta);border-radius:8px;background:#fff;color:var(--tinta)}
+input:focus,button:focus-visible,a:focus-visible{outline:3px solid var(--stabilo);outline-offset:2px}
+button{font:inherit;cursor:pointer;border:2px solid var(--tinta);border-radius:8px;
+  background:#fff;color:var(--tinta);transition:transform .12s,box-shadow .12s,background .12s}
+button.utama{padding:11px 20px;background:var(--aksen);color:#fff;font-weight:600}
+button.utama:hover{background:var(--aksen-gelap);transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--tinta)}
+button:active{transform:translate(1px,1px);box-shadow:none}
+.login button.utama{margin-top:20px;width:100%}
+.galat{background:#f8e6e9;border-left:5px solid var(--bahaya);padding:10px 12px;margin:0 0 6px;border-radius:4px}
+
+.tambah{display:flex;gap:10px;margin-bottom:22px}
+.tambah input{flex:1}
+
+.daftar{list-style:none;margin:0;padding:0}
+.daftar li{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px 4px;border-bottom:1px dashed var(--garis)}
+.daftar li:last-child{border-bottom:0}
+.teks{flex:0 1 auto;margin-right:auto;word-break:break-word;
+  background:linear-gradient(var(--tinta),var(--tinta)) no-repeat 0 55%/0 2px;
+  transition:color .3s}
+.daftar form{display:flex;gap:8px}
+.kecil{padding:6px 12px;font-size:.88rem}
+.kecil.ok:hover:not(:disabled){background:var(--stabilo)}
+.kecil.hapus:hover{background:var(--bahaya);color:#fff;border-color:var(--bahaya)}
+.kecil:disabled{opacity:.45;cursor:default}
+.selesai .teks{background-size:100% 2px;color:var(--samar)}
+.kosong{color:var(--samar);text-align:center;padding:18px 0 4px}
+
+.masuk{animation:masuk .45s cubic-bezier(.2,.8,.2,1) both}
+.baru-selesai .teks{animation:coret .5s ease-out both}
+@keyframes masuk{from{opacity:0;transform:translateX(-24px);background:#f6e7c1}to{opacity:1;transform:none}}
+@keyframes coret{from{background-size:0 2px}to{background-size:100% 2px}}
+@keyframes turun{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+@media (max-width:480px){
+  .daftar li{flex-direction:column;align-items:flex-start}
+  .tambah{flex-direction:column}
+}
