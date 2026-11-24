@@ -1,7 +1,6 @@
 <?php
 require 'config.php';
 
-// Buat user 'cecel' otomatis kalau belum ada (password = NIM)
 $cek = db()->prepare('SELECT COUNT(*) FROM users WHERE username = ?');
 $cek->execute(['cecel']);
 if ($cek->fetchColumn() == 0) {
